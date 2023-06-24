@@ -1,24 +1,26 @@
-import React from 'react';
+import { useState } from 'react'
 import './App.sass';
+import Reaction from '../Reaction/Reaction';
+import Rating from '../Rating/Rating';
 
 function App() {
+  const [rating, setRating] = useState<number | null>(null)
+  const [submited, setSubmited] = useState<boolean>(false);
+  const changeRating = (num: number) => {
+    setRating(num);
+  }
+
+  const confirmSubmit = () => {
+    setSubmited(true)
+  }
+
   return (
     <div className="App">
-      <div className="app__container">
-        <div className="app__button star-icon" />
-        <h1 className="app__title">How did we do?</h1>
-        <p className="app__paragraph">Please let us know how we
-          did with your support request. All feedback is appreciated
-          to help us improve our offering!</p>
-        <div className="app__buttons">
-          <div className="app__button">1</div>
-          <div className="app__button">2</div>
-          <div className="app__button">3</div>
-          <div className="app__button">4</div>
-          <div className="app__button">5</div>
-        </div>
-        <button className='app__submit'>SUBMIT</button>
-      </div>
+      {
+        !submited ?
+          <Rating rating={rating} onButtonClick={changeRating} onSubmitClick={confirmSubmit}/>
+          : <Reaction rating={rating}/>
+      }
     </div>
   );
 }

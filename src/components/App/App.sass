@@ -20,8 +20,23 @@
   box-sizing: border-box
   padding: 15px
   font-weight: 700
+  cursor: pointer
+  transition: background-color 0.3s
+  user-select: none
+  &:hover
+    background-color: #FC7613
+  &:active
+    background-color: #7C8898
+    color: white
+
+.active
+  background-color: #7C8898
+  color: white
 
 .star-icon
+  border-radius: 50%
+  cursor: default
+  user-select: none
   width: 48px
   height: 48px
   background: #262F38 url('../../images/icon-star.svg') no-repeat center
@@ -53,3 +68,33 @@
   border-radius: 22px
   letter-spacing: 3px
   font-weight: 700
+  cursor: pointer
+  &:hover
+    transition: background-color 0.3s
+    color: #FC7613
+    background-color: #FFFFFF
+
+.reaction__image
+  width: 98%
+  height: 133px
+  background: url('../../images/illustration-thank-you.svg') no-repeat center
+
+.reaction__select
+  background-color: #262F38
+  margin: 20px auto
+  height: 32px
+  width: 55%
+  border-radius: 16px
+  color: hsl(25, 97%, 53%)
+  box-sizing: border-box
+  text-align: center
+  padding-top: 7px
+  font-size: 15px
+
+.app__title-center
+  text-align: center
+  font-size: 29px
+
+.app__paragraph-center
+  width: 98%
+  text-align: center
