@@ -1,10 +1,11 @@
-import { RatingProps } from "../../types/types";
 import RatingButton from '../RatingButton/RatingButton';
+import { useAppSelector, useAppDispatch } from "../../hooks/hook";
+import { submitRating } from "../../store/submitSlice";
 
-const Rating: React.FC<RatingProps> = ({rating, onButtonClick, onSubmitClick}) => {
-  const submitClick = () => {
-    onSubmitClick()
-  }
+const Rating: React.FC = () => {
+  const rating = useAppSelector(state => state.rating.rating);
+  const dispatch = useAppDispatch();
+  const submitClick = () => dispatch(submitRating(true))
   return (
     <div className="app__container">
       <div className="star-icon" />
@@ -14,7 +15,7 @@ const Rating: React.FC<RatingProps> = ({rating, onButtonClick, onSubmitClick}) =
         to help us improve our offering!</p>
       <div className="app__buttons">
         {[...Array(5)].map((item, index) =>
-        <RatingButton key={index} ratingNumber={index+1} rating={rating} onClickFunc={onButtonClick}/>)}
+        <RatingButton key={index} ratingNumber={index+1}/>)}
       </div>
       <button disabled={rating === null} onClick={submitClick} type="submit" className='app__submit'>SUBMIT</button>
     </div>

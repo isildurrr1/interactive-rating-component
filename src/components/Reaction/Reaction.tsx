@@ -1,6 +1,7 @@
-import { ReactionProps } from "../../types/types";
+import { useAppSelector } from "../../hooks/hook";
 
-const Reaction: React.FC<ReactionProps> = ({rating}) => {
+const Reaction: React.FC = () => {
+  const rating = useAppSelector(state => state.rating.rating);
   return(
     <div className="app__container">
         <div className="reaction__image"/>
